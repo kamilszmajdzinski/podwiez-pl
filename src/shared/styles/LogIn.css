@@ -1,5 +1,5 @@
 *{
-    font-family: 'Righteous', cursive;
+    font-family: 'Poppins', sans-serif;
 }
 
 .loginContainer {
@@ -19,6 +19,7 @@
     height: 30%;
     display: flex;
     min-height: 250px;
+    max-width: 380px;
 }
 
 #signUp{
@@ -49,12 +50,20 @@
     border: none;
     text-transform: uppercase;
     margin-bottom: 0.5em;
-    background-color: #4267B2;
+    background-color: #003459;
     color: whitesmoke;
 }
 
 #normalButton {
-    background-color: tomato;
+    background-color: #007EA7;
+}
+
+.button:hover {
+    background-color: #00A8E8;
+}
+
+#normalButton:hover{
+    background-color: #00A8E8;
 }
 
 .registerPar{
@@ -71,7 +80,7 @@
 }
 
 .registerSpan {
-    color: tomato;
+    color: #007EA7;
 }
 
 .registerSpan:hover {
@@ -85,7 +94,7 @@
 }
 
 .returnSpan:hover {
-    color: tomato;
+    color: #007EA7;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -94,3 +103,19 @@
     margin: 0;
     padding-left: 1em;
 }
+
+@media only screen and (max-width: 800px) {
+  .loginComponent{
+      width: 60%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+    .loginComponent{
+        width: 80%;
+    }
+
+    .logo{
+        font-size: 3em;
+    }
+  }

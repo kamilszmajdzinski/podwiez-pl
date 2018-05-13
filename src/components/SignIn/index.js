@@ -59,7 +59,7 @@ class SignIn extends Component {
         <p className="logo"> Podwieź.pl </p>
         {this.state.registerForm ?
         (
-            <SignUp registerForm = {this.state.registerForm} />
+            <SignUp />
             
         ):(
             <div className="loginComponent">
