@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LogIn from "../../shared/styles/LogIn.css";
 import FacebookLogin from "react-facebook-login";
+import { Route, Link } from 'react-router-dom'
 import SignUp from '../SignUp/index'
 
 class SignIn extends Component {
@@ -14,19 +15,26 @@ class SignIn extends Component {
       name: "",
       email: "",
       picture: "",
-      registerForm: false
+      errorMessage: ''
     };
+    
   }
+
+  validateForm = () => {
+    if ((this.state.login.length === 0) || (this.state.password.length === 0) ) {
+      this.setState({ errorMessage: 'Podaj Dane' })
+    }else this.setState({ errorMessage: '' })
+  }
+
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.login);
+    this.validateForm();
+    console.log(this.state.errorMessage);
+    
   };
 
-  registerRequest = () => {
-    this.setState({ registerForm: true });
-    console.log(this.state.registerForm);
-  };
+  
 
   componentClicked = () => {
     console.log("component clicked");
@@ -57,14 +65,9 @@ class SignIn extends Component {
     return (
       <div className="loginContainer">
         <p className="logo"> Podwieź.pl </p>
-        {this.state.registerForm ?
-        (
-            <SignUp />
-            
-        ):(
+        
             <div className="loginComponent">
             <form>
-  
               <input
                 className="form"
                 type="text"
@@ -89,15 +92,14 @@ class SignIn extends Component {
                 Zaloguj
               </button>
               {fbContent}
+              <p className = 'errorMessage'>{this.state.errorMessage}</p>
               <p className="registerPar">
                 Nie masz konta?{" "}
-                <span className="registerSpan" onClick={this.registerRequest}>
-                  Zarejestruj się
-                </span>
+                <Link to="/signup">Zarejestruj się</Link>
               </p>
             </form>
           </div>
-        )}
+       
        
       </div>
     );

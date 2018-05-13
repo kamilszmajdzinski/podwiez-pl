@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LogIn from "../../shared/styles/LogIn.css";
+import { Link } from "react-router-dom";
 
 export default class SignUp extends Component {
 
@@ -21,6 +22,8 @@ export default class SignUp extends Component {
 
   render() {
     return (
+      <div className="loginContainer">
+        <p className="logo"> Podwieź.pl </p>
       <div className="loginComponent" id = 'signUp'>
         <form>
           <input
@@ -70,8 +73,9 @@ export default class SignUp extends Component {
           >
             Zarejestruj się
           </button>
-          <p className ='returnP' onClick = {this.props.registerForm = false}> <span className = 'returnSpan'> Powrót </span> </p>
+          <p className ='returnP'> <Link to = '/'>Powrót</Link> </p>
         </form>
+      </div>
       </div>
     );
   }

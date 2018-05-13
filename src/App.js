@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SignIn  from "./components/SignIn/index";
+import { Route } from "react-router-dom";
+import SignIn from './components/SignIn/index'
+import SignUp from './components/SignUp/index'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <SignIn />
+        <main>
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+        </main>
       </div>
     );
   }
