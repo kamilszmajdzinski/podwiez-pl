@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import LogIn from "../../shared/styles/LogIn.css";
 import FacebookLogin from "react-facebook-login";
 import { Route, Link } from 'react-router-dom'
 import SignUp from '../SignUp/index'
+import './style.css'
 
 class SignIn extends Component {
   constructor(props) {
@@ -23,15 +23,28 @@ class SignIn extends Component {
   validateForm = () => {
     if ((this.state.login.length === 0) || (this.state.password.length === 0) ) {
       this.setState({ errorMessage: 'Podaj Dane' })
-    }else this.setState({ errorMessage: '' })
+      return false
+    }else {
+      this.setState({ errorMessage: '' })
+      return true
+    }
   }
 
 
   handleSubmit = e => {
+    const login = this.state.login
+    const password = this.state.password
+    const credentials = {
+      login,
+      password
+    }
+
     e.preventDefault();
     this.validateForm();
-    console.log(this.state.errorMessage);
     
+    if (this.validateForm()) {
+      console.log(credentials);
+    }
   };
 
   
@@ -64,7 +77,10 @@ class SignIn extends Component {
 
     return (
       <div className="loginContainer">
-        <p className="logo"> Podwieź.pl </p>
+        
+          <div className = 'logoImg'>
+          </div>
+        
         
             <div className="loginComponent">
             <form>
@@ -93,10 +109,6 @@ class SignIn extends Component {
               </button>
               {fbContent}
               <p className = 'errorMessage'>{this.state.errorMessage}</p>
-              <p className="registerPar">
-                Nie masz konta?{" "}
-                <Link to="/signup">Zarejestruj się</Link>
-              </p>
             </form>
           </div>
        

@@ -1,0 +1,19 @@
+
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .landingContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e234f70b9f742c37a8a21c8e91d28d5&auto=format&fit=crop&w=1950&q=80') center no-repeat;
+        flex-direction: column;
+    }
+.authenticationContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
