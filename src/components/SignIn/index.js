@@ -54,7 +54,9 @@ class SignIn extends Component {
   };
 
   responseFacebook = response => {
-    console.log(response);
+      if (response.status !== 'unknown') {
+        console.log('zalogowano przez fb');
+      }
   };
 
   render() {
