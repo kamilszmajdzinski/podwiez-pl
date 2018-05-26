@@ -8,10 +8,10 @@ export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR'
 
 
 
-export function sumbitLogin(body){
-    return dispatch => {
+export function sumbitLogin(encoded){
+    return (dispatch) => {
         dispatch({ type: USER_LOGIN_PENDING})
-        return loginUser(body)
+        return loginUser(encoded)
             .then(res => {
                 if (res.status === 200) {
                     dispatch({ 

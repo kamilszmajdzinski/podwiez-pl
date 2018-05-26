@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import SignIn from '../SignIn'
 import SingUp from '../SignUp'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { sumbitLogin } from "../../actions/userActions";
 import "./style.css";
 
 
-export default class Landing extends Component {
+
+class Landing extends Component {
 
     constructor(props) {
         super(props)
@@ -21,11 +25,12 @@ export default class Landing extends Component {
     }
 
   render() {
+      const { isFetching, onSubmitLogin } = this.props
     return (
       <div className = 'landingContainer'>
         <div className = 'authenticationContainer'>
         {!this.state.registerView ? 
-            (<SignIn />) : 
+            (<SignIn onSubmitLogin = {onSubmitLogin}/>) : 
             (<SingUp />)
         }
         {!this.state.registerView ? 
@@ -37,3 +42,20 @@ export default class Landing extends Component {
     )
   }
 }
+
+
+ const mapStateToProps = ({ user }) => {
+    return {
+        isFetching: user.isFetching
+    }
+}
+
+ const mapDispatchToProps = dispatch => {
+     return {
+         onSubmitLogin : encoded =>{
+             dispatch(sumbitLogin(encoded))
+         }
+     } 
+ }
+
+ export default connect(mapStateToProps, mapDispatchToProps)(Landing)

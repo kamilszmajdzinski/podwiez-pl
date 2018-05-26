@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import { Route, Link } from 'react-router-dom'
+import base64 from "base-64"
+import utf8 from "utf8"
 import SignUp from '../SignUp/index'
 import './style.css'
 
@@ -32,18 +34,19 @@ class SignIn extends Component {
 
 
   handleSubmit = e => {
-    const login = this.state.login
-    const password = this.state.password
-    const credentials = {
-      login,
-      password
-    }
+    
+    const credentials = `${this.state.login}:${this.state.password}`
+    console.log(credentials);
+    
+    const bytes = utf8.encode(credentials)
+    const encoded = base64.encode(bytes) 
 
     e.preventDefault();
     this.validateForm();
     
     if (this.validateForm()) {
-      console.log(credentials);
+      console.log(encoded);
+      this.props.onSubmitLogin(encoded)
     }
   };
 

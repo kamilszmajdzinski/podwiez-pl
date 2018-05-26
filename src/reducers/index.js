@@ -4,5 +4,5 @@ import userReducer from './userReducer'
 
 export default combineReducers({
     routing: routerReducer,
-    userReducer
+    user: userReducer
 })
