@@ -2,3 +2,56 @@ form * {
     display: block;
     margin: 0 auto;
 }
+
+input{
+    width: 90%;
+    box-sizing: border-box;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    height: 2.5em;
+    outline: none;
+    border: 1px solid #00171F;
+}
+
+input:first-of-type{
+    margin-top: 5%;
+}
+
+button{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    border: 1px solid #00171F;
+    height: 2.5em;
+    background-color: #00171F;
+    transition: 0.5s ease;
+    color: white;
+    font-size: 1em;
+}
+
+#normalButton{
+    background-color: white;
+    color: #00171F;
+}
+
+.errorMessage{
+    color: red;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #005491;
+    color: white;
+}
+
+#normalButton:hover{
+    background-color: #005491;
+    color: white;
+}
+
+
+.loginContainer{
+    text-align: center;
+}

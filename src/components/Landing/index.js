@@ -28,14 +28,19 @@ class Landing extends Component {
       const { isFetching, onSubmitLogin } = this.props
     return (
       <div className = 'landingContainer'>
+
+        <div className = 'logo'>
+            
+        </div>
+
         <div className = 'authenticationContainer'>
         {!this.state.registerView ? 
             (<SignIn onSubmitLogin = {onSubmitLogin}/>) : 
             (<SingUp />)
         }
         {!this.state.registerView ? 
-            (<p onClick = {this.handleViewChange}>Nie masz konta? Zaloguj się</p>):
-            (<p onClick = {this.handleViewChange}>Powrót</p>)
+            (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zaloguj się</span></p>):
+            (<p onClick = {this.handleViewChange}> <span className = 'link'>Powrót</span></p>)
         }
         </div>
       </div>
