@@ -3,7 +3,7 @@ import SignIn from '../SignIn'
 import SingUp from '../SignUp'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { sumbitLogin } from "../../actions/userActions";
+import { sumbitLogin, submitRegister } from "../../actions/userActions";
 import "./style.css";
 
 
@@ -25,7 +25,7 @@ class Landing extends Component {
     }
 
   render() {
-      const { isFetching, onSubmitLogin } = this.props
+      const { isFetching, onSubmitLogin, onSubmitRegister } = this.props
     return (
       <div className = 'landingContainer'>
 
@@ -36,7 +36,7 @@ class Landing extends Component {
         <div className = 'authenticationContainer'>
         {!this.state.registerView ? 
             (<SignIn onSubmitLogin = {onSubmitLogin}/>) : 
-            (<SingUp />)
+            (<SingUp onSubmitRegister = {onSubmitRegister}/>)
         }
         {!this.state.registerView ? 
             (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zaloguj się</span></p>):
@@ -59,6 +59,9 @@ class Landing extends Component {
      return {
          onSubmitLogin : encoded =>{
              dispatch(sumbitLogin(encoded))
+         },
+         onSubmitRegister : body =>{
+             dispatch(submitRegister(body))
          }
      } 
  }

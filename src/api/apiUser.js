@@ -2,8 +2,6 @@ const url = 'https://podwiez-pl.herokuapp.com/'
 
 
 export const loginUser = encoded => {
-   console.log(encoded);
-   
     return fetch(url + 'rides/', {
         method: 'GET',
         headers: new Headers({
@@ -14,13 +12,10 @@ export const loginUser = encoded => {
 }
 
 export const registerUser = body => {
-   return fetch(url + 'acounts', {
+   return fetch(url + 'accounts', {
         method: 'POST',
         body: JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        credentials: 'same-origin'
+        mode: 'cors'
     })
 }
 

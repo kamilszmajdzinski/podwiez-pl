@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { hash } from "bcrypt";
+
 
 export default class SignUp extends Component {
 
@@ -15,9 +17,16 @@ export default class SignUp extends Component {
         }
     }
 
+
+    //TODO : add data validation
+
     handleSubmit = (e) => {
-        console.log(this.state);
+        const { email, password } = this.state
         e.preventDefault()
+
+        hash(password, 12, function(err, hash) {
+          console.log(hash)
+        });
     }
 
   render() {
