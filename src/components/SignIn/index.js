@@ -4,7 +4,9 @@ import { Route, Link } from 'react-router-dom'
 import base64 from "base-64"
 import utf8 from "utf8"
 import SignUp from '../SignUp/index'
+import { connect } from "react-redux";
 import './style.css'
+import { MoonLoader } from "react-spinners";
 
 class SignIn extends Component {
   constructor(props) {
@@ -88,7 +90,10 @@ class SignIn extends Component {
         
         
             <div className="loginComponent">
-            <form>
+            {this.props.isFetching ? 
+            ( <MoonLoader /> ):
+            (
+              <form>
               <input
                 className="form"
                 type="text"
@@ -115,6 +120,9 @@ class SignIn extends Component {
               {fbContent}
               <p className = 'errorMessage'>{this.state.errorMessage}</p>
             </form>
+            )  
+          }
+            
           </div>
        
        
@@ -123,4 +131,10 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapStateToProps = ({ user }) => {
+  return {
+    isFetching: user.isFetching
+  }
+}
+
+export default connect(mapStateToProps, )(SignIn);

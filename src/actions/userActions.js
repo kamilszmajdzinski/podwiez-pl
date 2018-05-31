@@ -18,6 +18,8 @@ export function sumbitLogin(encoded){
                         type: USER_LOGIN_SUCCESS
                     })
                 }
+                console.log(res);
+                
             })
             .catch(err => 
                 dispatch({ 

@@ -2,15 +2,14 @@ const url = 'https://podwiez-pl.herokuapp.com/'
 
 
 export const loginUser = encoded => {
+   console.log(encoded);
    
-    return fetch(url, {
+    return fetch(url + 'rides/', {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Basic ' + encoded, 
           }), 
-        credentials: 'include',
-        
-        
+        mode: 'cors'
     })
 }
 
