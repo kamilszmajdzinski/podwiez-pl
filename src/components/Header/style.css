@@ -16,12 +16,16 @@
 .header i {
     color: white;
     font-size: 1.5em;
-    margin: 1em;
+    padding: 1em;
     transition: 0.5s ease;
 }
 
 .header i:hover {
     color: #007EA7;
+}
+
+.header i:active {
+    color: #00171F;
 }
 
 @media only screen and (max-width: 500px){
