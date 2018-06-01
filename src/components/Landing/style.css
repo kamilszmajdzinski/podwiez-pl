@@ -41,6 +41,11 @@
     background-position: center;
 }
 
+.version{
+    color: white;
+    font-size: 1em;
+}
+
 @media only screen and (max-width: 1100px) {
     .authenticationContainer{
         width: 40%;
