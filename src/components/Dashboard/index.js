@@ -4,23 +4,41 @@ import Header from '../Header'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchInitData } from "../../actions/dataActions";
+import { Redirect } from "react-router-dom";
 
 class Dashboard extends Component {
 
     componentDidMount() {
-       console.log('cdm')
        this.props.fetchInitData()
     }
     
 
   render() {
+      const { isAuth } = this.props
     return (
-      <div className = 'dashboard'>
-        <Header />
-        <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
-      </div>
+        <div>
+        {!isAuth ? 
+        (
+            <Redirect to = '/'/>
+        ):(
+                <div className = 'dashboard'>
+                <Header />
+                <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
+                </div>
+            )
+        }
+        </div>
+      
+        
+      
     )
   }
+}
+
+export const mapStateToProps = ({ user }) => {
+    return {
+        isAuth: user.isAuth
+    }
 }
 
 export const mapDispatchToProps = dispatch => {
@@ -29,4 +47,4 @@ export const mapDispatchToProps = dispatch => {
     }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

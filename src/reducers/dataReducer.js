@@ -1,9 +1,10 @@
-import { FETCH_INITIAL_DATA_PENDING, FETCH_INITIAL_DATA_SUCCESS } from "../actions/dataActions";
+import { 
+    FETCH_INITIAL_DATA_PENDING, 
+    FETCH_INITIAL_DATA_SUCCESS } from "../actions/dataActions";
+
 const initialState = {
     isFetching: false,
 }
-
-
 
 export const dataReducer = (state = initialState, action) => {
     switch (action.type) {

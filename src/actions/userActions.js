@@ -10,6 +10,8 @@ export const USER_REG_PENDING = 'USER_REG_PENDING'
 export const USER_REG_SUCCESS = 'USER_REG_SUCCESS'
 export const USER_REG_ERROR = 'USER_REG_ERROR'
 
+export const USER_LOGOUT = 'USER_LOGOUT'
+
 
 
 export function sumbitLogin(encoded){
@@ -57,5 +59,11 @@ export function submitRegister(body){
 export function resetLoginError() {
     return dispatch => {
         dispatch({ type: RESET_LOGIN_ERROR })
+    }
+}
+
+export function logoutUser(params) {
+    return dispatch => {
+        dispatch({ type: USER_LOGOUT })
     }
 }
