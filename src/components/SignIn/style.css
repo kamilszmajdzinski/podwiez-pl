@@ -36,6 +36,12 @@ button{
     color: #00171F;
 }
 
+.loader{
+   display: flex;
+   justify-content: center;
+   margin-top: 2em;
+}
+
 .errorMessage{
     color: red;
     font-weight: bold;

@@ -5,6 +5,8 @@ import base64 from "base-64"
 import utf8 from "utf8"
 import SignUp from '../SignUp/index'
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { resetLoginError } from "../../actions/userActions";
 import './style.css'
 import { MoonLoader } from "react-spinners";
 
@@ -27,6 +29,7 @@ class SignIn extends Component {
   validateForm = () => {
     if ((this.state.login.length === 0) || (this.state.password.length === 0) ) {
       this.setState({ errorMessage: 'Podaj Dane' })
+      this.props.resetLoginError
       return false
     }else {
       this.setState({ errorMessage: '' })
@@ -91,7 +94,7 @@ class SignIn extends Component {
         
             <div className="loginComponent">
             {this.props.isFetching ? 
-            ( <MoonLoader /> ):
+            ( <div className = 'loader'> <MoonLoader color={'#005491'}  /> </div>):
             (
               <form>
               <input
@@ -118,7 +121,7 @@ class SignIn extends Component {
                 Zaloguj
               </button>
               {fbContent}
-              <p className = 'errorMessage'>{this.state.errorMessage}</p>
+              <p className = 'errorMessage'>{this.props.loginError ? this.props.loginError : this.state.errorMessage}</p>
             </form>
             )  
           }
@@ -133,8 +136,15 @@ class SignIn extends Component {
 
 const mapStateToProps = ({ user }) => {
   return {
-    isFetching: user.isFetching
+    isFetching: user.isFetching,
+    loginError: user.error
   }
+}
+
+const mapDispatchToProps = dispatch =>{
+  return bindActionCreators({
+    resetLoginError
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, )(SignIn);

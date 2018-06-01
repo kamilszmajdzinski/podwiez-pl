@@ -4,6 +4,7 @@ import { loginUser, registerUser } from '../api/apiUser'
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR'
+export const RESET_LOGIN_ERROR = "RESET_LOGIN_ERROR"
 
 export const USER_REG_PENDING = 'USER_REG_PENDING'
 export const USER_REG_SUCCESS = 'USER_REG_SUCCESS'
@@ -20,6 +21,8 @@ export function sumbitLogin(encoded){
                     dispatch({ 
                         type: USER_LOGIN_SUCCESS
                     })
+                }else if (res.status === 401) {
+                    dispatch({ type: USER_LOGIN_ERROR, err: 'Nieprawidłowy login i/lub hasło' })
                 }
                 console.log(res);
                 
@@ -40,11 +43,19 @@ export function submitRegister(body){
                 .then(res => {
                     if (res.status === 201) {
                         dispatch({ type: USER_REG_SUCCESS })
+                        console.log(res)
                     }
                 })
                 .catch(err => {
                     dispatch({ type: USER_REG_ERROR, err })
+                    console.log(err)
                 })
 
+    }
+}
+
+export function resetLoginError() {
+    return dispatch => {
+        dispatch({ type: RESET_LOGIN_ERROR })
     }
 }

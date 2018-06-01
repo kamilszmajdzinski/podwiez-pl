@@ -33,8 +33,37 @@
 }
 
 .logo{
-    width: 550px;
-    height:140px;
+    width: 50%;
+    height: 30%;
     margin-bottom: 3em;
-    background-image: url('../../shared/img/podwiez2.png')
+    background-image: url('../../shared/img/podwiez2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media only screen and (max-width: 1100px) {
+    .authenticationContainer{
+        width: 40%;
+    }
+
+    .logo{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .authenticationContainer{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .authenticationContainer{
+        width: 80%;
+    }
+    .logo{
+        width: 90%;
+        background-size: contain;
+        margin-bottom: 0em;
+    }
 }

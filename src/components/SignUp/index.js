@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { hash } from "bcrypt";
+import { hashSync, genSaltSync, getSalt } from "bcryptjs";
 
 
 export default class SignUp extends Component {
@@ -11,7 +11,7 @@ export default class SignUp extends Component {
         this.state = {
             name: '',
             surname: '',
-            login: '',
+            email: '',
             password: '',
             repeatedPassword: '',
         }
@@ -23,10 +23,18 @@ export default class SignUp extends Component {
     handleSubmit = (e) => {
         const { email, password } = this.state
         e.preventDefault()
+        console.log('hasło przed hashowaniem: ', password)
+        var salt = genSaltSync(12);
+        var hash = hashSync(password, salt);  
+        var saltt = getSalt()
 
-        hash(password, 12, function(err, hash) {
-          console.log(hash)
-        });
+        const body = {
+          email,
+          password: hash
+        }
+        console.log('hasło po hashoawniu: ', body.password)
+        console.log(body)
+        this.props.onSubmitRegister(body)
     }
 
   render() {
@@ -55,9 +63,9 @@ export default class SignUp extends Component {
           <input
             className="form"
             type="text"
-            value={this.state.login}
-            onChange={e => this.setState({ login: e.target.value })}
-            placeholder=" Login"
+            value={this.state.email}
+            onChange={e => this.setState({ email: e.target.value })}
+            placeholder=" Email"
           />
 
           <input

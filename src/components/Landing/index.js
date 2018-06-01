@@ -39,7 +39,7 @@ class Landing extends Component {
             (<SingUp onSubmitRegister = {onSubmitRegister}/>)
         }
         {!this.state.registerView ? 
-            (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zaloguj się</span></p>):
+            (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zarejestruj się</span></p>):
             (<p onClick = {this.handleViewChange}> <span className = 'link'>Powrót</span></p>)
         }
         </div>

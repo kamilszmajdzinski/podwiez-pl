@@ -1,4 +1,4 @@
-import { USER_LOGIN_ERROR, USER_LOGIN_PENDING, USER_LOGIN_SUCCESS, USER_REG_PENDING, USER_REG_SUCCESS, USER_REG_ERROR } from "../actions/userActions";
+import { USER_LOGIN_ERROR, USER_LOGIN_PENDING, USER_LOGIN_SUCCESS, USER_REG_PENDING, USER_REG_SUCCESS, USER_REG_ERROR, RESET_LOGIN_ERROR } from "../actions/userActions";
 
 const initialState = {
     isFetching: false,
@@ -19,6 +19,11 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: action.err
+            }
+        case RESET_LOGIN_ERROR:
+            return{
+                ...state,
+                error: null
             }
         case USER_LOGIN_SUCCESS: 
             return{
