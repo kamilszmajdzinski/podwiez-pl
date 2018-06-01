@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SignIn from '../SignIn'
 import SingUp from '../SignUp'
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { sumbitLogin, submitRegister } from "../../actions/userActions";
 import "./style.css";
@@ -25,24 +26,27 @@ class Landing extends Component {
     }
 
   render() {
-      const { isFetching, onSubmitLogin, onSubmitRegister } = this.props
+      const { isFetching, isAuth, onSubmitLogin, onSubmitRegister } = this.props
     return (
       <div className = 'landingContainer'>
 
         <div className = 'logo'>
             
         </div>
-
-        <div className = 'authenticationContainer'>
-        {!this.state.registerView ? 
-            (<SignIn onSubmitLogin = {onSubmitLogin}/>) : 
-            (<SingUp onSubmitRegister = {onSubmitRegister}/>)
+        {!isAuth ?
+            (<div className = 'authenticationContainer'>
+            {!this.state.registerView ? 
+                (<SignIn onSubmitLogin = {onSubmitLogin}/>) : 
+                (<SingUp onSubmitRegister = {onSubmitRegister}/>)
+            }
+            {!this.state.registerView ? 
+                (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zarejestruj się</span></p>):
+                (<p onClick = {this.handleViewChange}> <span className = 'link'>Powrót</span></p>)
+            }
+            </div>):(
+                <Redirect to ='/dashboard' />
+            )
         }
-        {!this.state.registerView ? 
-            (<p onClick = {this.handleViewChange}>Nie masz konta? <span className = 'link'>Zarejestruj się</span></p>):
-            (<p onClick = {this.handleViewChange}> <span className = 'link'>Powrót</span></p>)
-        }
-        </div>
       </div>
     )
   }
@@ -51,7 +55,8 @@ class Landing extends Component {
 
  const mapStateToProps = ({ user }) => {
     return {
-        isFetching: user.isFetching
+        isFetching: user.isFetching,
+        isAuth: user.isAuth
     }
 }
 
