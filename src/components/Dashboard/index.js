@@ -24,7 +24,16 @@ class Dashboard extends Component {
         ):(
                 <div className = 'dashboard'>
                 <Header />
-                <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
+                <div className = 'icons'>
+                    <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
+                        
+                            <i class="fas fa-plus-circle"></i>
+                            
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-road"></i>
+                    <i class="fas fa-user-edit"></i>
+                </div>
+                <div className ='footer'>  </div>
                 <Notifications />
                 </div>
             )

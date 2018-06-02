@@ -4,18 +4,66 @@
     
 }
 
+.icons{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.icons i {
+    color: #003459;
+    font-size: 5em;
+    margin: 0.5em;
+    text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+    transition: 0.5s ease;
+    animation-name: fadeIn;
+    animation-duration: 4s;
+    animation-delay: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    transform: translateY(2em)
+}
+
+.icons i:hover{
+    color: #007EA7;
+}
+
 .welcome{
     position: fixed;
-    left: 50%;
-    animation-name: fade-out;
-    animation-duration: 4s;
-    margin-left: -180px;
-    top: 50%;
     animation-name: fadeOut;
     animation-duration: 7s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
+    transform: translateY(6em);
+    text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+    color: #003459;
 }
+
+.footer{
+    height: 2em;
+    background-color: #003459;
+    position: fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    80% {opacity: 0;}
+    100% {opacity: 1;}
+ }
 
 @keyframes fadeOut {
     0% {opacity: 1;}

@@ -47,7 +47,7 @@ class Landing extends Component {
                 <Redirect to ='/dashboard' />
             )
         }
-        <p className = 'version'>v0.0.1</p>
+        <p className = 'version'>v0.0.3</p>
       </div>
     )
   }
