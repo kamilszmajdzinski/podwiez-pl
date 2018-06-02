@@ -8,12 +8,17 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import Snackbar from 'material-ui/Snackbar';
 
 class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {drawerOpen: false, dialogOpen: false};
+        this.state = {drawerOpen: false, dialogOpen: false, snackBarOpen: false};
+    }
+
+    componentWillReceiveProps() {
+        this.setState({ snackBarOpen: true})
     }
 
     handleLogout = () => {
@@ -22,13 +27,9 @@ class Header extends Component {
 
     handleDrawerToggle = () => this.setState({drawerOpen: !this.state.drawerOpen});
     handleDrawerClose = () => this.setState({drawerOpen: false});
-    handleDialogOpen = () => {
-        this.setState({dialogOpen: true});
-      };
-    
-      handleDialogClose = () => {
-        this.setState({dialogOpen: false});
-      };
+    handleDialogOpen = () => {this.setState({dialogOpen: true});};
+    handleDialogClose = () => {this.setState({dialogOpen: false});};
+    handleSnackBarClose = () => {this.setState({snackBarOpen: false})}
 
 
   render() {
@@ -72,8 +73,21 @@ class Header extends Component {
           Czy na pewno chcesz się wylogować?
         </Dialog>
 
+        <Snackbar
+          open={this.state.snackBarOpen}
+          message="Poprawnie zalogowano"
+          autoHideDuration={5000}
+          onRequestClose = {this.handleSnackBarClose}
+        />
+
     </div>
     )
+  }
+}
+
+const mapStateToProps = ({ user }) =>{
+  return {
+    isAuth: user.isAuth
   }
 }
 
@@ -83,4 +97,4 @@ const mapDispatchToProps = dispatch => {
     }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
