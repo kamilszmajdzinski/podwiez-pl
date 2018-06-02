@@ -1,4 +1,4 @@
 TODO:
 
--mobile styles
+-mobile styles -- done
 -icons description

@@ -14,6 +14,7 @@
 
 .icons i {
     color: #003459;
+    
     font-size: 5em;
     margin: 0.5em;
     text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
@@ -71,9 +72,26 @@
     100% {opacity: 0; display: none;}
  }
 
- @media only screen and (max-width: 400px){
+ @media only screen and (max-width: 500px){
     .welcome{
         font-size: 1em;
         margin-left: -90px;
+    }
+
+    .icons{
+        height: 40%;
+    }
+
+    .icons i {
+        font-size: 4em;
+        margin: 0.7em;
+    }
+ }
+
+ @media only screen and (max-width: 400px){
+
+    .icons i {
+        
+        margin: 0.5em;
     }
 }
