@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     isFetching: false,
-    isAuth: false,
+    isAuth: true,
     isCreatingUser: false,
     isCreated: false
 }
