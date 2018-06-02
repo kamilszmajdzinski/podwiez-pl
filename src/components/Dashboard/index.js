@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchInitData } from "../../actions/dataActions";
 import { Redirect } from "react-router-dom";
+import Footer from '../Footer'
 import Notifications from '../Notifications'
 
 class Dashboard extends Component {
@@ -24,16 +25,20 @@ class Dashboard extends Component {
         ):(
                 <div className = 'dashboard'>
                 <Header />
-                <div className = 'icons'>
-                    <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
-                        
-                            <i class="fas fa-plus-circle"></i>
+
+
+                    <div className = 'icons'>
+                        <h1 className = 'welcome'>Witaj, miło Cię widzieć!</h1>
                             
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-road"></i>
-                    <i class="fas fa-user-edit"></i>
-                </div>
-                <div className ='footer'>  </div>
+                                <i class="fas fa-plus-circle"></i>
+                                
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-road"></i>
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+
+
+                <Footer />
                 <Notifications />
                 </div>
             )

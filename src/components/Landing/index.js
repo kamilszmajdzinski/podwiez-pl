@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { sumbitLogin, submitRegister } from "../../actions/userActions";
 import "./style.css";
+import  Notifications  from "../Notifications";
 
 
 
@@ -48,6 +49,7 @@ class Landing extends Component {
             )
         }
         <p className = 'version'>v0.0.3</p>
+        <Notifications />
       </div>
     )
   }

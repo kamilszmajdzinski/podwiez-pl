@@ -30,12 +30,12 @@ export function sumbitLogin(encoded){
                 console.log(res);
                 
             })
-            .catch(err => 
+            .catch(err =>{ 
                 dispatch({ 
                     type: USER_LOGIN_ERROR,
-                    err
                  })
-            )
+                 showNotification(err.toString())(dispatch)
+            })
     }
 }
 

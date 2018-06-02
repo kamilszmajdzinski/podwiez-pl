@@ -8,13 +8,18 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { withRouter } from "react-router-dom";
 
 
 class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {drawerOpen: false, dialogOpen: false};
+        this.state = {
+          drawerOpen: false, 
+          dialogOpen: false,
+          addRideOpen: false
+        };
     }
 
     handleLogout = () => {
@@ -25,10 +30,11 @@ class Header extends Component {
     handleDrawerClose = () => this.setState({drawerOpen: false});
     handleDialogOpen = () => {this.setState({dialogOpen: true});};
     handleDialogClose = () => {this.setState({dialogOpen: false});};
-    
+    handleAddRide = () => {this.props.history.push('/addRide')}
 
 
   render() {
+
     const actions = [
         <FlatButton
           label="Anuluj"
@@ -57,7 +63,7 @@ class Header extends Component {
         onRequestChange={(drawerOpen) => this.setState({drawerOpen})}
       >
 
-        <MenuItem onClick={this.handleDrawerClose}>Dodaj przejazd</MenuItem>
+        <MenuItem onClick={this.handleAddRide}>Dodaj przejazd</MenuItem>
         <MenuItem onClick={this.handleDrawerClose}>Wyszukaj przejazd</MenuItem>
         <MenuItem onClick={this.handleDialogOpen}>Wyloguj się</MenuItem>
       </Drawer>
@@ -90,4 +96,4 @@ const mapDispatchToProps = dispatch => {
     }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
