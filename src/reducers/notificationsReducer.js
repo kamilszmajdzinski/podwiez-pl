@@ -11,7 +11,7 @@ export default function notificationReducer(state = initialState, action) {
             return{
                 ...state,
                 show: true,
-                notificationText: action.notificationText
+                text: action.notificationText
             }
         case HIDE_NOTIFICATION:
             return{
@@ -19,6 +19,6 @@ export default function notificationReducer(state = initialState, action) {
                 show: false
             }
         default:
-            state;
+            return state;
     }
 }

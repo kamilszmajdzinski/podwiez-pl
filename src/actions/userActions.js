@@ -1,5 +1,5 @@
 import { loginUser, registerUser } from '../api/apiUser'
-
+import { showNotification } from "../actions/notificationsActions";
 
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
@@ -23,6 +23,7 @@ export function sumbitLogin(encoded){
                     dispatch({ 
                         type: USER_LOGIN_SUCCESS
                     })
+                    showNotification('Zalogowano poprawnie.')(dispatch)
                 }else if (res.status === 401) {
                     dispatch({ type: USER_LOGIN_ERROR, err: 'Nieprawidłowy login i/lub hasło' })
                 }
