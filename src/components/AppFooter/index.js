@@ -15,7 +15,7 @@ const style = {
 }
 
 
-const Footer = () => {
+const AppFooter = () => {
   return (
     <div style = {style}>
       
@@ -23,4 +23,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default AppFooter

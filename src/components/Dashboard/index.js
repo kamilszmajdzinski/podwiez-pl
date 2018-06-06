@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchInitData } from "../../actions/dataActions";
 import { Redirect } from "react-router-dom";
-import Footer from '../Footer'
+import AppFooter from '../AppFooter'
 import Notifications from '../Notifications'
 
 class Dashboard extends Component {
@@ -38,7 +38,7 @@ class Dashboard extends Component {
                     </div>
 
 
-                <Footer />
+                <AppFooter />
                 <Notifications />
                 </div>
             )

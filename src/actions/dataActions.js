@@ -9,6 +9,6 @@ export function fetchInitData() {
     return (dispatch) => {
         dispatch({ type: FETCH_INITIAL_DATA_PENDING })
         return fetchInitialData()
-            .then(res => console.log(res))
+            .then(res => console.log(res.status))
     }
 }

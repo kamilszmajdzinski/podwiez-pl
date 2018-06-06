@@ -7,7 +7,8 @@ export const loginUser = encoded => {
         headers: new Headers({
             'Authorization': 'Basic ' + encoded, 
           }), 
-        mode: 'cors'
+         mode: 'cors',
+        
     })
 }
 

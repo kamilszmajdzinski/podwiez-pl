@@ -10,11 +10,13 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-facebook-login": "^4.0.1",
+    "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.0-rc.3",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",
     "react-spinners": "^0.3.2",
+    "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "utf8": "^3.0.0"
