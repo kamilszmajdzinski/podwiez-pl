@@ -14,7 +14,7 @@ import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { addRideAction } from "../../actions/dataActions";
-
+import { withRouter } from "react-router-dom";
 
 class AddRide extends Component {
 
@@ -61,7 +61,7 @@ class AddRide extends Component {
     }
 
     confirmRide = () => {
-        const { addRideAction, credentials } = this.props
+        const { addRideAction, credentials, postRideSuccess } = this.props
 
         const body = {
             fromPlace: this.state.fromPlace,
@@ -77,6 +77,9 @@ class AddRide extends Component {
             availablePlaces: this.state.availablePlaces
         }
         addRideAction(credentials, body)
+
+        this.props.history.push('/dashboard')
+
     }
 
     goBack = () => {
@@ -230,6 +233,7 @@ class AddRide extends Component {
       <div className = 'addRide'>
             <Header />
                 {this.renderView()}
+                
             <Notifications />
             <AppFooter />
       </div>
@@ -246,8 +250,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = ({ user, data }) => {
     return {
-        credentials: user.credentials
+        credentials: user.credentials,
+        postRideSuccess: data.postRideSuccess
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddRide)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddRide))

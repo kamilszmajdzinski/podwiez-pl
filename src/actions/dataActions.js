@@ -45,6 +45,9 @@ export function addRideAction(credentials, body){
                     showNotification('Dodano przejazd. Przejazd dostępny w zakładce Moje przejazdy')(dispatch)
                 }
             })
-            .catch(err => dispatch({ type: ADD_RIDE_ERROR }))
+            .catch(err => {
+                dispatch({ type: ADD_RIDE_ERROR })
+                showNotification(err.toString())(dispatch)
+            })
     }
 }
