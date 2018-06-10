@@ -32,3 +32,21 @@
         width: 90%;
     }
 }
+
+.dataDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.daysDiv{
+    width: 40%;
+    margin: 1em 2em;
+    margin-bottom: 4em;
+}
+
+.dataDiv .amountDiv{
+    display: flex;
+    flex-direction: column;
+    
+    
+}

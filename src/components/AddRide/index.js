@@ -10,6 +10,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { showNotification } from "../../actions/notificationsActions";
 import Notifications from '../Notifications/index'
+import Toggle from 'material-ui/Toggle';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 
 class AddRide extends Component {
 
@@ -28,6 +32,8 @@ class AddRide extends Component {
         amount: null,
         availablePlaces: null
     }
+
+
 
     validatePlacesForm(){
         const { toPlace, fromPlace } = this.state
@@ -51,6 +57,8 @@ class AddRide extends Component {
     goBack = () => {
         this.setState({ detailsView: false, placesView: true })
     }
+
+    handlePlacesChange = (event, index, value) => this.setState({ availablePlaces: value });
 
     renderView = () => {
         
@@ -86,6 +94,65 @@ class AddRide extends Component {
             return(
                 <div className = 'addRideContainer'>
                     <p>Dodaj przejazd - podaj szczegóły</p>
+                    <div  className = 'dataDiv'>
+                        <div className = 'daysDiv'>
+                            <Toggle
+                                label="Poniedziałek"
+                                toggled = {this.state.monRide}
+                                onToggle = {e => this.setState({ monRide: true })}
+                                />
+                            <Toggle
+                                label="Wtorek"
+                                toggled = {this.state.tueRide}
+                                onToggle = {e => this.setState({ tueRide: true })}
+                                />
+                            <Toggle
+                                label="Środa"
+                                toggled = {this.state.wedRide}
+                                onToggle = {e => this.setState({ wedRide: true })}
+                                />
+                            <Toggle
+                                label="Czwartek"
+                                toggled = {this.state.thuRide}
+                                onToggle = {e => this.setState({ thuRide: true })}
+                                />
+                            <Toggle
+                                label="Piątek"
+                                toggled = {this.state.friRide}
+                                onToggle = {e => this.setState({ friRide: true })}
+                                />
+                            <Toggle
+                                label="Sobota"
+                                toggled = {this.state.satRide}
+                                onToggle = {e => this.setState({ satRide: true })}
+                                />
+                            <Toggle
+                                label="Niedziela"
+                                toggled = {this.state.sunRide}
+                                onToggle = {e => this.setState({ sunRide: true })}
+                                />
+                        </div>
+                        <div className = 'amountDiv'>
+                            <SelectField
+                                floatingLabelText="Liczba miejsc w aucie"
+                                value={this.state.availablePlaces}
+                                onChange={this.handlePlacesChange}
+                            >
+                                <MenuItem value={1} primaryText="1" />
+                                <MenuItem value={2} primaryText="2" />
+                                <MenuItem value={3} primaryText="3" />
+                                <MenuItem value={4} primaryText="4" />
+                            </SelectField>
+                            <TextField
+                                hintText="15zł"
+                                floatingLabelText="Cena za przejazd (zł)"
+                                type="number"
+                                value = {this.state.amount}
+                                onChange = {e => this.setState({ amount: e.target.value })}
+                            />
+                        </div>
+
+                    </div>
                     <RaisedButton 
                             backgroundColor = "#003459" 
                             label="Powrót do wyboru trasy"
