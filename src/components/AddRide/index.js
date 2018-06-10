@@ -13,6 +13,7 @@ import Notifications from '../Notifications/index'
 import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import { addRideAction } from "../../actions/dataActions";
 
 
 class AddRide extends Component {
@@ -20,6 +21,7 @@ class AddRide extends Component {
     state = {
         placesView: true,
         detailsView: false,
+        summaryView: false,
         fromPlace: '',
         toPlace: '',
         monRide: false,
@@ -54,6 +56,29 @@ class AddRide extends Component {
         }
     }
 
+    confirmDetails = () => {
+        this.setState({ detailsView: false, summaryView: true })
+    }
+
+    confirmRide = () => {
+        const { addRideAction, credentials } = this.props
+
+        const body = {
+            fromPlace: this.state.fromPlace,
+            toPlace: this.state.toPlace,
+            monRide: this.state.monRide,
+            tueRide: this.state.tueRide,
+            wedRide: this.state.wedRide,
+            thuRide: this.state.thuRide,
+            friRide: this.state.friRide,
+            satRide: this.state.satRide,
+            sunRide: this.state.sunRide,
+            amount: this.state.amount,
+            availablePlaces: this.state.availablePlaces
+        }
+        addRideAction(credentials, body)
+    }
+
     goBack = () => {
         this.setState({ detailsView: false, placesView: true })
     }
@@ -62,7 +87,7 @@ class AddRide extends Component {
 
     renderView = () => {
         
-        const { placesView, detailsView } = this.state
+        const { placesView, detailsView, summaryView } = this.state
         if (placesView) {
             return(
                 <div className = 'addRideContainer'>
@@ -162,9 +187,36 @@ class AddRide extends Component {
                             backgroundColor = "#003459" 
                             label="Nastęny krok"
                             labelColor = 'rgb(255,255,255)'
-                            onClick = {this.confirmPlaces}  />
+                            onClick = {this.confirmDetails}  />
                 </div>
             )
+        }else if (summaryView) {
+            return(
+                <div className = 'addRideContainer'>
+                    <p>Dodaj przejazd - podsumowanie</p>
+
+                    <div className = 'summaryDiv'>
+                        <h2>Trasa</h2>
+                        <p>z: {this.state.fromPlace}</p>
+                        <p>do: {this.state.toPlace}</p>
+                        <h2>Szczegóły trasy</h2>
+                        <p>Liczba miejsc: {this.state.availablePlaces}</p>
+                        <p>Kwota za przejazd: {this.state.amount} zł</p>
+                    </div>
+
+                    <RaisedButton 
+                        backgroundColor = "#003459" 
+                        label="Powrót do szczegółow"
+                        labelColor = 'rgb(255,255,255)'
+                        onClick = {this.goBack}  />
+                    <RaisedButton 
+                        backgroundColor = "#003459" 
+                        label="Potwierdź przejazd"
+                        labelColor = 'rgb(255,255,255)'
+                        onClick = {this.confirmRide}  />
+                </div>          
+            )
+            
         }
     }
 
@@ -187,8 +239,15 @@ class AddRide extends Component {
 
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
-        showNotification
+        showNotification,
+        addRideAction
     }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(AddRide)
+const mapStateToProps = ({ user, data }) => {
+    return {
+        credentials: user.credentials
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddRide)

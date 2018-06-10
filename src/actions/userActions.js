@@ -1,5 +1,6 @@
 import { loginUser, registerUser } from '../api/apiUser'
 import { showNotification } from "../actions/notificationsActions";
+import { addRide } from "../api/apiData";
 
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
@@ -11,6 +12,8 @@ export const USER_REG_SUCCESS = 'USER_REG_SUCCESS'
 export const USER_REG_ERROR = 'USER_REG_ERROR'
 
 export const USER_LOGOUT = 'USER_LOGOUT'
+
+
 
 
 
@@ -67,3 +70,4 @@ export function logoutUser(params) {
         dispatch({ type: USER_LOGOUT })
     }
 }
+

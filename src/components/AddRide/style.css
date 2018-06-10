@@ -47,6 +47,10 @@
 .dataDiv .amountDiv{
     display: flex;
     flex-direction: column;
-    
-    
+}
+
+.summaryDiv{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 2em;
 }

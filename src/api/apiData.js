@@ -21,3 +21,16 @@ export const fetchUserData = (credentials) => {
         mode: 'cors'
     })
 }
+
+export const addRide = (credentials, body) => {
+    console.log('wysyłam coś takiego: ' + body)
+    return fetch(url + 'rides', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: new Headers({
+            'Content-Type':'application/json',
+            'Authorization': 'Basic ' + credentials,
+          }),
+        mode: 'cors' 
+    })
+}
