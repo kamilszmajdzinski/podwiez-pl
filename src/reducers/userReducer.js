@@ -12,7 +12,8 @@ const initialState = {
     isFetching: false,
     isAuth: false,
     isCreatingUser: false,
-    isCreated: false
+    isCreated: false,
+    credentials: null
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -37,7 +38,8 @@ export const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isFetching: false,
-                isAuth: true
+                isAuth: true,
+                credentials: action.encoded
             }
         case USER_REG_PENDING:
             return{
@@ -59,7 +61,8 @@ export const userReducer = (state = initialState, action) => {
         case USER_LOGOUT:
             return{
                 ...state,
-                isAuth: false
+                isAuth: false,
+                credentials: null
             }
         default:
             return state;

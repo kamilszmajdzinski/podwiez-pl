@@ -9,8 +9,8 @@ export default class SignUp extends Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '',
-            surname: '',
+            lastName: '',
+            firstName: '',
             email: '',
             password: '',
             repeatedPassword: '',
@@ -21,18 +21,26 @@ export default class SignUp extends Component {
     //TODO : add data validation
 
     handleSubmit = (e) => {
-        const { email, password } = this.state
+      const { firstName, 
+              lastName,
+              email,
+              password} = this.state
+      
+      
         e.preventDefault()
         console.log('hasło przed hashowaniem: ', password)
         var salt = genSaltSync(12);
         var hash = hashSync(password, salt);  
-        var saltt = getSalt()
+        
+        
 
         const body = {
-          email,
-          password: hash
+          "firstName": firstName,
+          "lastName": lastName, 
+          "email": email,
+          "password": hash
         }
-        console.log('hasło po hashoawniu: ', body.password)
+
         console.log(body)
         this.props.onSubmitRegister(body)
     }
@@ -47,16 +55,16 @@ export default class SignUp extends Component {
           <input
             className="form"
             type="text"
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.firstName}
+            onChange={e => this.setState({ firstName: e.target.value })}
             placeholder=" Imię"
           />
 
           <input
             className="form"
             type="text"
-            value={this.state.surname}
-            onChange={e => this.setState({ surname: e.target.value })}
+            value={this.state.lastName}
+            onChange={e => this.setState({ lastName: e.target.value })}
             placeholder=" Nazwisko"
           />
 

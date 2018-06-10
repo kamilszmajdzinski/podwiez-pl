@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Dashboard from './components/Dashboard'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AddRide from './components/AddRide'
+import MyAccount from './components/MyAccount';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path="/signup" component={SignUp} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/addRide" component={AddRide} />
+          <Route path="/myAccount" component={MyAccount} />
        </MuiThemeProvider>
     );
   }

@@ -11,7 +11,8 @@ import Notifications from '../Notifications'
 class Dashboard extends Component {
 
     componentDidMount() {
-       this.props.fetchInitData()
+       const { credentials, fetchInitData } = this.props
+        credentials && fetchInitData(credentials)
     }
     
 
@@ -53,7 +54,8 @@ class Dashboard extends Component {
 
 export const mapStateToProps = ({ user }) => {
     return {
-        isAuth: user.isAuth
+        isAuth: user.isAuth,
+        credentials: user.credentials
     }
 }
 

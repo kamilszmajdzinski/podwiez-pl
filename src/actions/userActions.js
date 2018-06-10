@@ -21,14 +21,13 @@ export function sumbitLogin(encoded){
             .then(res => {
                 if (res.status === 200) {
                     dispatch({ 
-                        type: USER_LOGIN_SUCCESS
-                    })
+                        type: USER_LOGIN_SUCCESS,
+                        encoded
+                    })   
                     showNotification('Zalogowano poprawnie.')(dispatch)
                 }else if (res.status === 401) {
                     dispatch({ type: USER_LOGIN_ERROR, err: 'Nieprawidłowy login i/lub hasło' })
                 }
-                console.log(res);
-                
             })
             .catch(err =>{ 
                 dispatch({ 

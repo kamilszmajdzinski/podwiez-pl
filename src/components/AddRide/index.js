@@ -33,7 +33,10 @@ export default class AddRide extends Component {
                     />
 
                     <AppMap />
-                    <RaisedButton backgroundColor = "#003459" label="Nastęny krok"  />
+                    <RaisedButton 
+                        backgroundColor = "#003459" 
+                        label="Nastęny krok"
+                        labelColor = 'white'  />
                 </div>
             <AppFooter />
       </div>

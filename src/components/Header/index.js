@@ -31,6 +31,7 @@ class Header extends Component {
     handleDialogOpen = () => {this.setState({dialogOpen: true});};
     handleDialogClose = () => {this.setState({dialogOpen: false});};
     handleAddRide = () => {this.props.history.push('/addRide')}
+    handleMyAccount = () => {this.props.history.push('/myAccount')}
 
 
   render() {
@@ -65,6 +66,7 @@ class Header extends Component {
 
         <MenuItem onClick={this.handleAddRide}>Dodaj przejazd</MenuItem>
         <MenuItem onClick={this.handleDrawerClose}>Wyszukaj przejazd</MenuItem>
+        <MenuItem onClick={this.handleMyAccount}>Moje konto</MenuItem>
         <MenuItem onClick={this.handleDialogOpen}>Wyloguj się</MenuItem>
       </Drawer>
 
