@@ -8,6 +8,7 @@ import './style.css'
 import CircularProgress from 'material-ui/CircularProgress';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Redirect } from "react-router-dom";
 
 class MyAccount extends Component {
 
@@ -48,13 +49,16 @@ renderRide = (ride) => {
 
   render() {
 
-    const { accountData, ridesData } = this.props
+    const { accountData, ridesData, isAuth } = this.props
     const tempRidesData = ridesData.slice(0, 2)
 
     return (
       <div className = 'myAccount'>
         <Header />
-            <div className = 'myAccountContainer'>
+            {!isAuth ? (
+                <Redirect to = '/' />
+            ):(
+                <div className = 'myAccountContainer'>
                     {accountData ? (
                         <div className = 'userDiv'>
                             <h2>Dane użytkownika  <i class="fas fa-user-edit"></i></h2>
@@ -83,6 +87,8 @@ renderRide = (ride) => {
                             color = "#003459"/>
                     )}
             </div>
+            )}
+            
         <Footer />
       </div>
     )
@@ -92,6 +98,7 @@ renderRide = (ride) => {
 
 const mapStateToProps = ({ user, data }) => {
     return{
+        isAuth: user.isAuth,
         credentials: user.credentials,
         accountData: data.accountData,
         fetchAccountPending: data.fetchAccountPending,

@@ -1,4 +1,4 @@
-TODO:
+### TODO:
+-icons navigation
 
--mobile styles -- done
--icons description
+-registration error
