@@ -15,7 +15,6 @@ export const registerUser = body => {
    return fetch(url + 'accounts', {
         method: 'POST',
         headers: {
-            Accept: '*/*',
             'Content-Type': 'application/json'
         },
     })

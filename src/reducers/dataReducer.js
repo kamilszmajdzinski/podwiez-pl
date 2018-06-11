@@ -3,12 +3,18 @@ import {
     FETCH_INITIAL_DATA_SUCCESS, 
     ADD_RIDE_PENDING,
     ADD_RIDE_SUCCESS,
-    ADD_RIDE_ERROR} from "../actions/dataActions";
+    ADD_RIDE_ERROR,
+    FETCH_ACCOUNT_PENDING,
+    FETCH_ACCOUNT_SUCCESS} from "../actions/dataActions";
 
 const initialState = {
     isFetching: false,
     postRidePending: false,
-    postRideSuccess: false
+    postRideSuccess: false,
+    fetchAccountPending: false,
+    fetchAccountSuccess: false,
+    accountData: null,
+    ridesData: null
 }
 
 export const dataReducer = (state = initialState, action) => {
@@ -22,7 +28,7 @@ export const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true,
-                data: action.data
+                ridesData: action.response
             }
         case ADD_RIDE_PENDING:
             return {
@@ -40,6 +46,18 @@ export const dataReducer = (state = initialState, action) => {
                 ...state,
                 postRidePending: false,
                 postRideSuccess: false
+            }
+        case FETCH_ACCOUNT_PENDING: 
+            return{
+                ...state,
+                fetchAccountPending: true
+            }
+        case FETCH_ACCOUNT_SUCCESS:
+            return{
+                ...state,
+                fetchAccountPending: false,
+                fetchAccountSuccess: true,
+                accountData: action.accountData
             }
         
         default:

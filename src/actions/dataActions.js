@@ -22,7 +22,13 @@ export function fetchInitData(credentials) {
         dispatch({ type: FETCH_INITIAL_DATA_PENDING })
         return fetchInitialData(credentials)
             .then(res => res.json())
-            .then(response => console.log(response))
+            .then(response => {
+                dispatch({ type: FETCH_INITIAL_DATA_SUCCESS, response })
+            })
+            .catch(err => {
+                dispatch({ type: FETCH_INITIAL_DATA_ERROR })
+                showNotification(err.toString())(dispatch)
+            })
     }
 }
 
@@ -31,7 +37,13 @@ export function fetchAccountData(credentials) {
         dispatch({ type: FETCH_ACCOUNT_PENDING })
         return fetchUserData(credentials)
             .then(res => res.json())
-            .then(resJson => console.log(resJson))
+            .then(accountData => {
+                dispatch({ type: FETCH_ACCOUNT_SUCCESS, accountData })
+            })
+            .catch(err => {
+                dispatch({ type: FETCH_ACCOUNT_ERROR })
+                showNotification(err.toString())(dispatch)
+            })
     }
 }
 

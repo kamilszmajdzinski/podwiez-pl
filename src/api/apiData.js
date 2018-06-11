@@ -1,7 +1,6 @@
 const url = 'https://podwiez-pl.herokuapp.com/'
 
 export const fetchInitialData = (credentials) => {
-    
     return fetch(url + 'rides/myRides', {
         method: 'GET',
         headers: new Headers({

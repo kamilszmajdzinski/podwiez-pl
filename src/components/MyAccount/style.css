@@ -1,0 +1,33 @@
+.myAccount {
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.myAccountContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    margin-top: 6em;
+    margin-bottom: 3em; 
+    
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.userDiv{
+    padding: 0 3em;
+    border-bottom: 1px solid rgba(0,0,0,0.3)
+}
+
+.userDiv p {
+    margin-left: 1em;
+}
+
+.ridesDiv h2 {
+    margin: 2em 3em;
+    margin-bottom: 1em;
+   
+}
